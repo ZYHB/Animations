@@ -81,6 +81,9 @@
 #import "LoadCSSViewController.h"
 #import "CountDownButtonController.h"
 #import "CustomCollectionViewController.h"
+#import "TreeStructureTableViewController.h"
+#import "DrawRectViewController.h"
+#import "TwoLevelLinkageViewController.h"
 
 @interface AnimationsListController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, DefaultNotificationCenterDelegate>
 
@@ -144,10 +147,11 @@
 #pragma mark - configNotificationCenter
 
 - (void)configNotificationCenter {
-    
-    self.notificationCenter          = [DefaultNotificationCenter new];
-    self.notificationCenter.delegate = self;
-    [self.notificationCenter addNotificationName:noti_showHomePageTableView];
+        
+    self.notificationCenter = [DefaultNotificationCenter defaultNotificationCenterWithDelegate:self addNotificationNames:^(NSMutableArray<NSString *> *names) {
+        
+        [names addObject:noti_showHomePageTableView];
+    }];
 }
 
 #pragma mark - DefaultNotificationCenterDelegate
@@ -234,7 +238,7 @@
                        [Item itemWithName:@"粒子动画-雪花" object:[EmitterSnowController class]],
                        [Item itemWithName:@"刮奖效果" object:[ScratchImageViewController class]],
                        [Item itemWithName:@"图片切换效果" object:[LiveImageViewController class]],
-                       [Item itemWithName:@"SDWebImage加载图片" object:[SDWebImageController class]],
+                       // [Item itemWithName:@"SDWebImage加载图片" object:[SDWebImageController class]],
                        [Item itemWithName:@"抽象的AlertView" object:[AlertViewController class]],
                        [Item itemWithName:@"瀑布流效果" object:[WaterfallLayoutController class]],
                        [Item itemWithName:@"UILabel混色显示" object:[MixedColorProgressViewController class]],
@@ -247,7 +251,7 @@
                        [Item itemWithName:@"果冻效果" object:[SpringEffectController class]],
                        [Item itemWithName:@"CASpringAnimation" object:[CASpringAnimationController class]],
                        [Item itemWithName:@"Additive属性动画" object:[AdditiveAnimationController class]],
-                       [Item itemWithName:@"加载网络数据" object:[TableViewLoadDataController class]],
+                       // [Item itemWithName:@"加载网络数据" object:[TableViewLoadDataController class]],
                        [Item itemWithName:@"MotionEffect效果" object:[MotionEffectViewController class]],
                        [Item itemWithName:@"加载GIF图片" object:[GifPictureController class]],
                        [Item itemWithName:@"震动效果" object:[SCViewShakerController class]],
@@ -273,7 +277,10 @@
                        [Item itemWithName:@"线性旋转木马" object:[ScrollCarouselViewController class]],
                        [Item itemWithName:@"Load CSS" object:[LoadCSSViewController class]],
                        [Item itemWithName:@"倒计时按钮" object:[CountDownButtonController class]],
-                       [Item itemWithName:@"定制的CollectionView" object:[CustomCollectionViewController class]]];
+                       [Item itemWithName:@"定制的CollectionView" object:[CustomCollectionViewController class]],
+                       [Item itemWithName:@"树形结构cell" object:[TreeStructureTableViewController class]],
+                       [Item itemWithName:@"DrawRect" object:[DrawRectViewController class]],
+                       [Item itemWithName:@"级联菜单" object:[TwoLevelLinkageViewController class]]];
     
     self.items = [NSMutableArray array];
     
@@ -329,7 +336,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     
     [super viewDidDisappear:animated];
-    //    self.enableInteractivePopGestureRecognizer = YES;
+    // self.enableInteractivePopGestureRecognizer = YES;
 }
 
 @end

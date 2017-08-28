@@ -31,37 +31,37 @@
 /**
  *  CustomCell's delegate.
  */
-@property (nonatomic, weak) id <CustomCellDelegate>  delegate;
+@property (nonatomic, weak) id <CustomCellDelegate> delegate;
 
 /**
  *  CustomCell's dataAdapter.
  */
-@property (nonatomic, weak) CellDataAdapter         *dataAdapter;
+@property (nonatomic, weak) CellDataAdapter *dataAdapter;
 
 /**
  *  CustomCell's data.
  */
-@property (nonatomic, weak) id                       data;
+@property (nonatomic, weak) id data;
 
 /**
  *  CustomCell's indexPath.
  */
-@property (nonatomic, weak) NSIndexPath             *indexPath;
+@property (nonatomic, weak) NSIndexPath *indexPath;
 
 /**
  *  TableView.
  */
-@property (nonatomic, weak) UITableView             *tableView;
+@property (nonatomic, weak) UITableView *tableView;
 
 /**
  *  Controller.
  */
-@property (nonatomic, weak) UIViewController        *controller;
+@property (nonatomic, weak) UIViewController *controller;
 
 /**
  *  Cell is showed or not, you can set this property in UITableView's method 'tableView:willDisplayCell:forRowAtIndexPath:' & 'tableView:didEndDisplayingCell:forRowAtIndexPath:' at runtime.
  */
-@property (nonatomic)       BOOL                     display;
+@property (nonatomic) BOOL display;
 
 #pragma mark - Method you should overwrite.
 
@@ -116,10 +116,7 @@
  *
  *  @return Cell's dataAdapter.
  */
-+ (CellDataAdapter *)dataAdapterWithCellReuseIdentifier:(NSString *)reuseIdentifier
-                                                   data:(id)data
-                                             cellHeight:(CGFloat)height
-                                                   type:(NSInteger)type;
++ (CellDataAdapter *)dataAdapterWithCellReuseIdentifier:(NSString *)reuseIdentifier data:(id)data cellHeight:(CGFloat)height type:(NSInteger)type;
 
 /**
  *  Create the cell's dataAdapter.
@@ -132,10 +129,7 @@
  *
  *  @return Cell's dataAdapter.
  */
-+ (CellDataAdapter *)dataAdapterWithCellReuseIdentifier:(NSString *)reuseIdentifier
-                                                   data:(id)data
-                                             cellHeight:(CGFloat)height
-                                              cellWidth:(CGFloat)cellWidth
++ (CellDataAdapter *)dataAdapterWithCellReuseIdentifier:(NSString *)reuseIdentifier data:(id)data cellHeight:(CGFloat)height cellWidth:(CGFloat)cellWidth
                                                    type:(NSInteger)type;
 
 /**
@@ -147,9 +141,7 @@
  *
  *  @return Cell's dataAdapter.
  */
-+ (CellDataAdapter *)dataAdapterWithData:(id)data
-                              cellHeight:(CGFloat)height
-                                    type:(NSInteger)type;
++ (CellDataAdapter *)dataAdapterWithData:(id)data cellHeight:(CGFloat)height type:(NSInteger)type;
 
 /**
  *  Create the cell's dataAdapter, the CellReuseIdentifier is the cell's class string.
@@ -159,8 +151,7 @@
  *
  *  @return Cell's dataAdapter.
  */
-+ (CellDataAdapter *)dataAdapterWithData:(id)data
-                              cellHeight:(CGFloat)height;
++ (CellDataAdapter *)dataAdapterWithData:(id)data cellHeight:(CGFloat)height;
 
 /**
  *  Create the cell's dataAdapter, the CellReuseIdentifier is the cell's class string.
@@ -178,6 +169,47 @@
  @return Cell's dataAdapter.
  */
 + (CellDataAdapter *)dataAdapterWithCellHeight:(CGFloat)height;
+
+/**
+ [= Must over write class method 'cellHeightWithData:' to get the height =]
+ 
+ Create the cell's dataAdapter, the CellReuseIdentifier is the cell's class string.
+ 
+ @param reuseIdentifier Cell reuseIdentifier, can be nil.
+ @param data Cell's data, can be nil.
+ @param type Cell's type.
+ @return Cell's dataAdapter.
+ */
++ (CellDataAdapter *)fixedHeightTypeDataAdapterWithCellReuseIdentifier:(NSString *)reuseIdentifier data:(id)data type:(NSInteger)type;
+
+/**
+ [= Must over write class method 'cellHeightWithData:' to get the height =]
+ 
+ Create the cell's dataAdapter, the CellReuseIdentifier is the cell's class string.
+ 
+ @param data Cell's data, can be nil.
+ @param type Cell's type.
+ @return Cell's dataAdapter.
+ */
++ (CellDataAdapter *)fixedHeightTypeDataAdapterWithData:(id)data type:(NSInteger)type;
+
+/**
+ [= Must over write class method 'cellHeightWithData:' to get the height =]
+ 
+ Create the cell's dataAdapter, the CellReuseIdentifier is the cell's class string.
+ 
+ @param data Cell's data, can be nil.
+ @return Cell's dataAdapter.
+ */
++ (CellDataAdapter *)fixedHeightTypeDataAdapterWithData:(id)data;
+
+/**
+ [= Must over write class method 'cellHeightWithData:' to get the height =]
+ 
+ Create the cell's dataAdapter, the CellReuseIdentifier is the cell's class string.
+ @return Cell's dataAdapter.
+ */
++ (CellDataAdapter *)fixedHeightTypeDataAdapter;
 
 /**
  Create the layout type cell's dataAdapter, the CellReuseIdentifier is the cell's class string.
@@ -245,9 +277,7 @@
  @param tableView The tableView.
  @param indexPath The indexPath.
  */
-- (void)loadContentWithAdapter:(CellDataAdapter *)dataAdapter
-                      delegate:(id <CustomCellDelegate>)delegate
-                     tableView:(UITableView *)tableView
+- (void)loadContentWithAdapter:(CellDataAdapter *)dataAdapter delegate:(id <CustomCellDelegate>)delegate tableView:(UITableView *)tableView
                      indexPath:(NSIndexPath *)indexPath;
 
 /**
@@ -256,8 +286,7 @@
  *  @param tableView       TableView.
  *  @param reuseIdentifier The cell reuseIdentifier.
  */
-+ (void)registerToTableView:(UITableView *)tableView
-            reuseIdentifier:(NSString *)reuseIdentifier;
++ (void)registerToTableView:(UITableView *)tableView reuseIdentifier:(NSString *)reuseIdentifier;
 
 /**
  *  Register to tableView with the The class name.

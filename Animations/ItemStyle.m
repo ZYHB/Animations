@@ -1,18 +1,24 @@
 //
 //  ItemStyle.m
-//  ItemObject
+//  ItemStyle
 //
-//  Created by YouXianMing on 2016/12/25.
-//  Copyright © 2016年 TechCode. All rights reserved.
+//  Created by YouXianMing on 2017/7/27.
+//  Copyright © 2017年 TechCode. All rights reserved.
 //
 
 #import "ItemStyle.h"
 
 @implementation ItemStyle
 
-- (void)makeEffect {
+- (void)makeStyleEffective {
+    
+    [NSException raise:@"Use ItemStyle in the wrong way."
+                format:@"You should overwrite the method 'makeStyleEffective', not override."];
+}
 
-    // Override by subclass.
++ (instancetype)style {
+    
+    return [[[self class] alloc] init];
 }
 
 @end

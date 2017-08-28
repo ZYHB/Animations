@@ -9,6 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "ShowLoadingView.h"
 #import "ControllerBaseViewConfig.h"
+@class BaseCustomViewController;
+
+@protocol BaseCustomViewControllerDelegate <NSObject>
+
+@optional
+
+/**
+ *  The BaseCustomViewController's event.
+ *
+ *  @param controller Kind of BaseCustomViewController.
+ *  @param event The event.
+ */
+- (void)baseCustomViewController:(__kindof BaseCustomViewController *)controller event:(id)event;
+
+@end
 
 @interface BaseCustomViewController : UIViewController
 
@@ -37,6 +52,11 @@ extern NSString * const backgroundViewId;
 @property (nonatomic, strong) UIView           *titleView;
 @property (nonatomic, strong) UIView           *contentView;
 @property (nonatomic, strong) UIView           *backgroundView;
+
+/**
+ *  The BaseCustomViewController's delegate.
+ */
+@property (nonatomic, weak) id <BaseCustomViewControllerDelegate> eventDelegate;
 
 /**
  *  You can only use this method when the current controller is an UINavigationController's rootViewController.
@@ -70,6 +90,11 @@ extern NSString * const backgroundViewId;
  *  @param viewsConfig Configs.
  */
 - (void)makeViewsConfig:(NSMutableDictionary <NSString *, ControllerBaseViewConfig *> *)viewsConfig;
+
+/**
+ *  Setup data source.
+ */
+- (void)setupDataSource;
 
 /**
  *  Overwrite to setup titleView, contentView etc.

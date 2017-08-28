@@ -56,6 +56,7 @@ NSString * const backgroundViewId  = @"backgroundViewId";
     [self makeViewsConfig:self.viewsConfig];
     [self buildConfigViews];
     [self setupSubViews];
+    [self setupDataSource];
 }
 
 - (void)initViewsConfigs {
@@ -201,6 +202,8 @@ NSString * const backgroundViewId  = @"backgroundViewId";
 
 - (void)viewDidDisappear:(BOOL)animated {
     
+    [super viewDidDisappear:animated];
+    
 #ifdef DEBUG
     
     [self debugWithString:@"[⛔️] Did left from" debugTag:kLeaveControllerType];
@@ -212,7 +215,7 @@ NSString * const backgroundViewId  = @"backgroundViewId";
     
 #ifdef DEBUG
     
-    [self debugWithString:@"[❌] Did released the" debugTag:kDeallocType];
+    [self debugWithString:@"[⚠️] Did released the" debugTag:kDeallocType];
     
 #endif
 }
@@ -280,6 +283,10 @@ NSString * const backgroundViewId  = @"backgroundViewId";
 }
 
 - (void)setupSubViews {
+    
+}
+
+- (void)setupDataSource {
     
 }
 

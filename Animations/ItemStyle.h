@@ -1,9 +1,9 @@
 //
 //  ItemStyle.h
-//  ItemObject
+//  ItemStyle
 //
-//  Created by YouXianMing on 2016/12/25.
-//  Copyright © 2016年 TechCode. All rights reserved.
+//  Created by YouXianMing on 2017/7/27.
+//  Copyright © 2017年 TechCode. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,13 +12,22 @@
 @interface ItemStyle : NSObject
 
 /**
- The source object.
+ The source object to use the style.
  */
-@property (nonatomic, weak) id item;
+@property (nonatomic, weak) id source;
 
 /**
- Make the style effective, override by subclass.
+ Get the style object.
+ 
+ @return The style object.
  */
-- (void)makeEffect;
++ (instancetype)style;
+
+/**
+ [- Must Overwrite by subclass -]
+ 
+ Make the style effective.
+ */
+- (void)makeStyleEffective;
 
 @end
